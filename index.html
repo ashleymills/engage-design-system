@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engage Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap">
+
+<style>
+:root {
+  --ink:        #1C355E;
+  --ink-soft:   #3C4A66;
+  --graphite:   #4C4A47;
+  --muted:      #86837C;
+  --gold:       #CC9F53;
+  --gold-ink:   #7A5E1F;
+  --gold-soft:  #F5ECDD;
+  --ground:     #F4F2EE;
+  --surface:    #FFFFFF;
+  --surface-2:  #EAE7E2;
+  --hairline:   #E0DCD4;
+  --hairline-2: #EFEDE9;
+  --claret:     #8A1E41;
+  --shadow:     0 1px 2px rgba(28,53,94,.05), 0 6px 16px rgba(28,53,94,.05);
+
+  --serif: "Source Serif 4", Calluna, Georgia, serif;
+  --sans:  "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --measure: 68ch;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink:        #EFECE5;
+    --ink-soft:   #C6CEDF;
+    --graphite:   #B3AFA7;
+    --muted:      #8C93A3;
+    --gold:       #D9B072;
+    --gold-ink:   #E1C698;
+    --gold-soft:  #2B2519;
+    --ground:     #111A2A;
+    --surface:    #19243A;
+    --surface-2:  #212E48;
+    --hairline:   #2C3A55;
+    --hairline-2: #243149;
+    --claret:     #C97E96;
+    --shadow:     0 1px 2px rgba(0,0,0,.3), 0 8px 22px rgba(0,0,0,.28);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink:        #EFECE5;
+  --ink-soft:   #C6CEDF;
+  --graphite:   #B3AFA7;
+  --muted:      #8C93A3;
+  --gold:       #D9B072;
+  --gold-ink:   #E1C698;
+  --gold-soft:  #2B2519;
+  --ground:     #111A2A;
+  --surface:    #19243A;
+  --surface-2:  #212E48;
+  --hairline:   #2C3A55;
+  --hairline-2: #243149;
+  --claret:     #C97E96;
+  --shadow:     0 1px 2px rgba(0,0,0,.3), 0 8px 22px rgba(0,0,0,.28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell { display: grid; grid-template-columns: 15rem minmax(0,1fr); gap: 3rem; max-width: 78rem; margin: 0 auto; padding: 0 2rem; }
+@media (max-width: 62rem) { .shell { grid-template-columns: 1fr; gap: 0; padding: 0 1.25rem; } }
+
+/* ---------- rail ---------- */
+.rail { position: sticky; top: 0; align-self: start; height: 100vh; overflow-y: auto; padding: 3rem 0; }
+@media (max-width: 62rem) { .rail { position: static; height: auto; padding: 2rem 0 0; } }
+.rail .mark { display: flex; align-items: center; gap: .55rem; margin-bottom: 2rem; }
+.rail .mark .r { width: 1.9rem; height: 1.9rem; border-radius: 6px; background: var(--gold); color: #1C355E; font-family: var(--serif); font-weight: 700; font-size: 1.1rem; display: grid; place-items: center; }
+.rail .mark span { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); }
+.rail nav { display: flex; flex-direction: column; gap: .1rem; border-left: 1px solid var(--hairline); }
+.rail a { display: block; padding: .3rem 0 .3rem 1rem; margin-left: -1px; border-left: 2px solid transparent; color: var(--graphite); text-decoration: none; font-size: .95rem; }
+.rail a:hover, .rail a:focus-visible { color: var(--ink); border-left-color: var(--gold); }
+.rail .grp { padding: 1rem 0 .25rem 1rem; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+/* ---------- content ---------- */
+main { padding: 3rem 0 6rem; min-width: 0; }
+section { padding-top: 2.5rem; }
+section + section { margin-top: 3rem; border-top: 1px solid var(--hairline); }
+
+.eyebrow { font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); margin: 0 0 .5rem; }
+h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2.4rem, 5vw, 3.3rem); line-height: 1.08; letter-spacing: -.01em; color: var(--ink); margin: 0 0 1rem; text-wrap: balance; }
+h2 { font-family: var(--serif); font-weight: 600; font-size: 1.95rem; line-height: 1.2; color: var(--ink); margin: 0 0 .35rem; letter-spacing: -.005em; text-wrap: balance; }
+h3 { font-family: var(--sans); font-weight: 600; font-size: 1.02rem; color: var(--ink); margin: 2rem 0 .75rem; }
+p { margin: 0 0 1rem; max-width: var(--measure); }
+.lede { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; color: var(--ink-soft); max-width: var(--measure); }
+.sub { color: var(--muted); max-width: var(--measure); margin-bottom: 1.75rem; }
+code, .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .86em; }
+a { color: var(--gold-ink); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
+
+.note { border-left: 2px solid var(--gold); background: var(--gold-soft); padding: 1rem 1.15rem; border-radius: 0 6px 6px 0; max-width: var(--measure); margin: 1.5rem 0; }
+.note p { margin: 0; }
+.note p + p { margin-top: .6rem; }
+.note strong { color: var(--ink); }
+
+/* ---------- swatches ---------- */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: .9rem; margin: 1rem 0 2rem; }
+.sw { background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); }
+.sw .chip { height: 4.2rem; border-bottom: 1px solid rgba(28,53,94,.08); }
+.sw .meta { padding: .6rem .7rem .7rem; }
+.sw .tok { font-weight: 600; color: var(--ink); font-size: .92rem; word-break: break-word; }
+.sw .hex { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .78rem; color: var(--muted); letter-spacing: .02em; }
+.sw .use { font-size: .8rem; color: var(--graphite); margin-top: .35rem; line-height: 1.4; }
+
+.ramp { display: grid; grid-template-columns: 8rem repeat(4, 1fr); align-items: stretch; border: 1px solid var(--hairline); border-radius: 10px; overflow: hidden; margin-bottom: .6rem; background: var(--surface); }
+.ramp .name { padding: .8rem .9rem; font-weight: 600; color: var(--ink); font-size: .92rem; display: flex; align-items: center; }
+.ramp .step { padding: 1.1rem .6rem .6rem; text-align: center; }
+.ramp .step .pct { font-size: .72rem; font-weight: 600; letter-spacing: .1em; }
+.ramp .step .hx { font-family: ui-monospace, Menlo, monospace; font-size: .7rem; opacity: .75; }
+@media (max-width: 40rem) { .ramp { grid-template-columns: 1fr 1fr; } .ramp .name { grid-column: 1 / -1; border-bottom: 1px solid var(--hairline); } }
+
+.series { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 2rem; }
+.series div { width: 3.4rem; height: 3.4rem; border-radius: 8px; display: grid; place-items: end center; padding-bottom: .25rem; font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.85); }
+
+/* ---------- type specimens ---------- */
+.specimen { border-bottom: 1px solid var(--hairline-2); padding: 1.4rem 0; display: grid; grid-template-columns: 11rem minmax(0,1fr); gap: 1.5rem; align-items: baseline; }
+@media (max-width: 48rem) { .specimen { grid-template-columns: 1fr; gap: .4rem; } }
+.specimen .spec { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+.specimen .spec b { display: block; color: var(--ink); font-size: .95rem; font-weight: 600; }
+.specimen .spec .m { font-family: ui-monospace, Menlo, monospace; font-size: .74rem; }
+.sample { color: var(--ink); margin: 0; max-width: none; }
+.sr { font-family: var(--serif); }
+.ss { font-family: var(--sans); }
+
+/* ---------- scale rulers ---------- */
+.scale-row { display: grid; grid-template-columns: 4.5rem 4rem minmax(0,1fr); gap: 1rem; align-items: center; padding: .45rem 0; }
+.scale-row .k { font-weight: 600; color: var(--ink); }
+.scale-row .v { font-family: ui-monospace, Menlo, monospace; font-size: .82rem; color: var(--muted); }
+.bar { height: 1.1rem; background: var(--gold); border-radius: 2px; }
+
+.radii { display: flex; flex-wrap: wrap; gap: 1.25rem; margin: 1rem 0 1.5rem; }
+.radii figure { margin: 0; text-align: center; }
+.radii .box { width: 6.5rem; height: 4.4rem; background: var(--surface-2); border: 1px solid var(--hairline); }
+.radii figcaption { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
+.radii figcaption b { color: var(--ink); display: block; font-size: .9rem; }
+
+.elevs { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem,1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+.elevs figure { margin: 0; }
+.elevs .card { height: 5.5rem; border-radius: 20px; background: var(--surface); border: 1px solid var(--hairline-2); }
+.e1 { box-shadow: 0 1px 1px rgba(28,53,94,.06), 0 1px 1.5px rgba(28,53,94,.05); }
+.e2 { box-shadow: 0 2px 3px rgba(28,53,94,.07), 0 6px 8px rgba(28,53,94,.06); }
+.e3 { box-shadow: 0 8px 12px rgba(28,53,94,.10), 0 18px 24px rgba(28,53,94,.10); }
+.elevs figcaption { font-size: .82rem; color: var(--muted); margin-top: .75rem; }
+.elevs figcaption b { color: var(--ink); display: block; font-size: .9rem; }
+
+/* ---------- tables ---------- */
+.tw { overflow-x: auto; margin: 1rem 0 2rem; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .92rem; }
+th { text-align: left; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: .8rem 1rem; border-bottom: 1px solid var(--hairline); white-space: nowrap; }
+td { padding: .7rem 1rem; border-bottom: 1px solid var(--hairline-2); vertical-align: top; color: var(--graphite); }
+tr:last-child td { border-bottom: 0; }
+td.n { color: var(--ink); font-weight: 600; white-space: nowrap; }
+td.num { font-variant-numeric: tabular-nums; font-family: ui-monospace, Menlo, monospace; font-size: .84rem; color: var(--muted); white-space: nowrap; }
+
+/* ---------- inventory ---------- */
+.group { margin: 1.75rem 0; }
+.group > h3 { display: flex; align-items: baseline; gap: .6rem; margin-bottom: .4rem; }
+.group > h3 .count { font-size: .74rem; font-weight: 600; color: var(--muted); letter-spacing: .1em; }
+.group > p { font-size: .9rem; color: var(--muted); margin-bottom: .8rem; }
+.inv { display: grid; grid-template-columns: repeat(auto-fill, minmax(20rem,1fr)); gap: 0 1.75rem; }
+.inv > div { padding: .6rem 0; border-top: 1px solid var(--hairline-2); font-size: .88rem; color: var(--graphite); line-height: 1.45; }
+.inv:has(figure) { display: block; columns: 21rem; column-gap: 1.75rem; }
+.inv > figure { display: inline-block; width: 100%; margin: 0 0 1.5rem; padding: 0; border-top: 1px solid var(--hairline-2); break-inside: avoid; }
+.inv:has(figure) > div { display: inline-block; width: 100%; break-inside: avoid; }
+.inv > figure img { display: block; width: 100%; height: auto; margin: .75rem 0 0; background: #fff; border: 1px solid var(--hairline-2); border-radius: 8px; }
+.inv > figure figcaption { padding: .6rem 0 0; font-size: .88rem; color: var(--graphite); line-height: 1.45; }
+.inv b { color: var(--ink); font-weight: 600; }
+
+.tag { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; padding: .12rem .45rem; border-radius: 4px; background: var(--surface-2); color: var(--muted); vertical-align: 1px; margin-left: .35rem; }
+
+footer { border-top: 1px solid var(--hairline); margin-top: 3.5rem; padding-top: 1.5rem; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="mark"><div class="r">R</div><span>Engage</span></div>
+    <nav>
+      <div class="grp">Start</div>
+      <a href="#brief">For the designer</a>
+      <div class="grp">Foundations</div>
+      <a href="#colour">Colour</a>
+      <a href="#tints">Tints</a>
+      <a href="#charts">Chart palette</a>
+      <a href="#type">Typography</a>
+      <a href="#space">Spacing</a>
+      <a href="#radius">Corners</a>
+      <a href="#elevation">Elevation</a>
+      <a href="#motion">Motion</a>
+      <div class="grp">Components</div>
+      <a href="#inventory">Inventory</a>
+      <a href="#fixed">Not for restyling</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <p class="eyebrow">Rothschild &amp; Co Engage · iOS</p>
+    <h1>Design System</h1>
+    <p class="lede">Every colour, type role, measurement and shadow in the app, and the components built from them.</p>
+
+    <section id="brief">
+      <p class="eyebrow">How to use this</p>
+      <h2>For the designer</h2>
+      <p class="sub">Two files and a folder of images come with this page.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>File</th><th>What it is</th><th>What to do with it</th></tr></thead>
+          <tbody>
+            <tr><td class="n">engage-design-tokens.json</td><td>Every token below, in the W3C Design Tokens format.</td><td>Import into Figma with the Tokens Studio plugin, or edit the values by hand.</td></tr>
+            <tr><td class="n">This page</td><td>The same tokens, shown at real size and in context, plus the component list.</td><td>Reference.</td></tr>
+            <tr><td class="n">images/</td><td>A shot of each component, rendered from the app at iPhone width.</td><td>Reference. The page reads them from here.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <p><strong>The serif on this page is a stand-in.</strong> The app's serif is Calluna, a licensed commercial face that cannot be embedded in a web page. Specimens below render in Source Serif 4. The font files sit at <code>Frameworks/DesignSystem/Resources/Fonts/</code>. The sans is Source Sans 3, shown as it is.</p>
+      </div>
+    </section>
+
+    <section id="colour">
+      <p class="eyebrow">Foundations</p>
+      <h2>Colour</h2>
+      <p class="sub">Six brand colours, and a working set derived from them. Swatches show the true value.</p>
+
+      <h3>Brand</h3>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1C355E"></div><div class="meta"><div class="tok">rothschildBlue</div><div class="hex">#1C355E</div><div class="use">Primary text, primary buttons, hero surfaces.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#CC9F53"></div><div class="meta"><div class="tok">gold</div><div class="hex">#CC9F53</div><div class="use">Accent. Selection, emphasis, AI markers.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#8A1E41"></div><div class="meta"><div class="tok">red</div><div class="hex">#8A1E41</div><div class="use">Negative figures, error tone.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#E8C9BA"></div><div class="meta"><div class="tok">rose</div><div class="hex">#E8C9BA</div><div class="use">Soft warm fill under red ink.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#4C4A47"></div><div class="meta"><div class="tok">graphite</div><div class="hex">#4C4A47</div><div class="use">Secondary text.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="meta"><div class="tok">white</div><div class="hex">#FFFFFF</div><div class="use">Card fill, page ground.</div></div></div>
+      </div>
+
+      <h3>Semantic roles</h3>
+      <p class="sub">Aliases, not new colours.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Role</th><th>Points at</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td class="n">textPrimary</td><td class="num">rothschildBlue</td><td>Headings and primary copy on light surfaces.</td></tr>
+            <tr><td class="n">textSecondary</td><td class="num">graphite</td><td>Supporting copy.</td></tr>
+            <tr><td class="n">background</td><td class="num">white</td><td>The page ground. Tab screens lay a gold-tinted gradient over it.</td></tr>
+            <tr><td class="n">accent</td><td class="num">gold</td><td>Every point of emphasis in the app.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Working set</h3>
+      <p class="sub">Derived from the brand colours.</p>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="meta"><div class="tok">surface1</div><div class="hex">#FFFFFF</div><div class="use">Card fill.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#EFECEA"></div><div class="meta"><div class="tok">surface2</div><div class="hex">#EFECEA</div><div class="use">Chart tracks, inset panels, skeletons.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#E5E2DC"></div><div class="meta"><div class="tok">hairline</div><div class="hex">#E5E2DC</div><div class="use">1pt divider between cards.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#EFEDE9"></div><div class="meta"><div class="tok">hairlineSoft</div><div class="hex">#EFEDE9</div><div class="use">1pt divider inside a card.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#3C4A66"></div><div class="meta"><div class="tok">inkSoft</div><div class="hex">#3C4A66</div><div class="use">Body copy: navy softened for long reads.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#8A8780"></div><div class="meta"><div class="tok">muted</div><div class="hex">#8A8780</div><div class="use">Captions, timestamps, inactive tabs.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#3D664A"></div><div class="meta"><div class="tok">positive</div><div class="hex">#3D664A</div><div class="use">Positive figures and up-moves.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#D3E6D8"></div><div class="meta"><div class="tok">positiveSoft</div><div class="hex">#D3E6D8</div><div class="use">Soft fill under positive ink.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#8A1E41"></div><div class="meta"><div class="tok">negative</div><div class="hex">#8A1E41</div><div class="use">Negative figures and down-moves.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#A07A2B"></div><div class="meta"><div class="tok">warning</div><div class="hex">#A07A2B</div><div class="use">Caution tone.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#F5ECDD"></div><div class="meta"><div class="tok">goldSoft</div><div class="hex">#F5ECDD</div><div class="use">Cream fill for gold-toned panels.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#7A5E1F"></div><div class="meta"><div class="tok">goldInk</div><div class="hex">#7A5E1F</div><div class="use">Readable gold for text on cream.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#F6F4EF"></div><div class="meta"><div class="tok">onDark</div><div class="hex">#F6F4EF</div><div class="use">Primary text on navy heroes.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#9AA6C0"></div><div class="meta"><div class="tok">onDarkMuted</div><div class="hex">#9AA6C0</div><div class="use">Secondary text on navy.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#142A4A"></div><div class="meta"><div class="tok">bluePress</div><div class="hex">#142A4A</div><div class="use">Pressed primary button.</div></div></div>
+        <div class="sw"><div class="chip" style="background:#B98C3F"></div><div class="meta"><div class="tok">goldPress</div><div class="hex">#B98C3F</div><div class="use">Pressed gold button.</div></div></div>
+      </div>
+    </section>
+
+    <section id="tints">
+      <p class="eyebrow">Foundations</p>
+      <h2>Tints</h2>
+      <p class="sub">A percentage tint of the primary blue.</p>
+
+      <div class="ramp">
+        <div class="name">Blue</div>
+        <div class="step" style="background:#A4AEBF;color:#1C355E"><div class="pct">40%</div><div class="hx">#A4AEBF</div></div>
+      </div>
+      <p class="sub">Used for the unfilled star and the share glyph.</p>
+    </section>
+
+    <section id="charts">
+      <p class="eyebrow">Foundations</p>
+      <h2>Chart palette</h2>
+      <p class="sub">Charts draw from a fixed twelve-step order, so a chart with three lines always uses the first three.</p>
+
+      <h3>Series order</h3>
+      <div class="series">
+        <div style="background:#2E3E80">1</div>
+        <div style="background:#50A1A1">2</div>
+        <div style="background:#ACBFB7;color:#20302A">3</div>
+        <div style="background:#3D664A">4</div>
+        <div style="background:#B0BA7D;color:#2A2E18">5</div>
+        <div style="background:#992E63">6</div>
+        <div style="background:#CCA7A7;color:#3A2222">7</div>
+        <div style="background:#6E9966">8</div>
+        <div style="background:#752F5A">9</div>
+        <div style="background:#1F6699">10</div>
+        <div style="background:#C3C29D;color:#2A2E18">11</div>
+        <div style="background:#B55B6A">12</div>
+      </div>
+      <p class="sub">Separately, charts use <b>positive</b> and <b>negative</b> from the working set wherever a value carries direction, and <b>gold</b> wherever a series is "you".</p>
+    </section>
+
+    <section id="type">
+      <p class="eyebrow">Foundations</p>
+      <h2>Typography</h2>
+      <p class="sub">Two faces, seventeen roles. Calluna, a serif, carries titles, ledes and stat values; Source Sans 3 carries body copy, figures and every label.</p>
+
+      <p>Sizes are points at the reader's default text size and scale up with the iOS text-size setting. Line height is a multiple of the size. Letter-spacing is in em.</p>
+
+      <div class="specimen">
+        <div class="spec"><b>largeTitle</b>Calluna Bold<span class="m"> · 38 / 1.12 / −0.01</span><br>Screen headings.</div>
+        <p class="sample sr" style="font-weight:700;font-size:38px;line-height:1.12;letter-spacing:-.01em">Investor questions</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>displayL</b>Source Sans 3<span class="m"> · 44 / 1.10</span><br>Largest figure. Tabular digits.</div>
+        <p class="sample ss" style="font-size:44px;line-height:1.10;font-variant-numeric:tabular-nums">£4,182.60</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>title</b>Calluna Semibold<span class="m"> · 32 / 1.15 / −0.005</span></div>
+        <p class="sample sr" style="font-weight:600;font-size:32px;line-height:1.15;letter-spacing:-.005em">Why your stock is moving</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>displayM</b>Source Sans 3<span class="m"> · 32 / 1.15</span><br>Hero figure. Tabular digits.</div>
+        <p class="sample ss" style="font-size:32px;line-height:1.15;font-variant-numeric:tabular-nums">+2.41%</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>statValue</b>Calluna Regular<span class="m"> · 28 / 1.20</span><br>The figure in a stat tile.</div>
+        <p class="sample sr" style="font-size:28px;line-height:1.20;font-variant-numeric:tabular-nums">14.8x</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>displayS</b>Source Sans 3<span class="m"> · 26 / 1.20</span></div>
+        <p class="sample ss" style="font-size:26px;line-height:1.20;font-variant-numeric:tabular-nums">£3.9bn</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>lede</b>Calluna Regular<span class="m"> · 22 / 1.32</span><br>Opening paragraph of a long read.</div>
+        <p class="sample sr" style="font-size:22px;line-height:1.32">Two of your five largest holders added last week, and the desk reads it as conviction rather than rebalancing.</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>figure</b>Source Sans 3<span class="m"> · 22 / 1.30</span><br>Standard figure. Tabular digits.</div>
+        <p class="sample ss" style="font-size:22px;line-height:1.30;font-variant-numeric:tabular-nums">1,284,900</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>headline</b>Source Sans 3 Semibold<span class="m"> · 20 / 1.30</span><br>Card and list row titles.</div>
+        <p class="sample ss" style="font-weight:600;font-size:20px;line-height:1.30">Hot in your inbox</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>body</b>Source Sans 3<span class="m"> · 18 / 1.40</span><br>Default reading copy.</div>
+        <p class="sample ss" style="font-size:18px;line-height:1.40;max-width:34em">Volume ran at twice the twenty-day average through the afternoon, concentrated in two blocks that crossed after the close.</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>note</b>Calluna Regular<span class="m"> · 18 / 1.40</span><br>Serif aside.</div>
+        <p class="sample sr" style="font-size:18px;line-height:1.40;max-width:34em">Figures shown are consensus, not the house forecast.</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>subhead</b>Source Sans 3<span class="m"> · 17 / 1.45</span><br>The line under a screen title.</div>
+        <p class="sample ss" style="font-size:17px;line-height:1.45">Flagged by investor relations this week</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>figureS</b>Source Sans 3<span class="m"> · 17 / 1.30</span><br>Table cell figure.</div>
+        <p class="sample ss" style="font-size:17px;line-height:1.30;font-variant-numeric:tabular-nums">92.4 · 88.1 · 104.7</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>caption</b>Source Sans 3<span class="m"> · 16 / 1.35</span><br>Timestamps, sources, detail.</div>
+        <p class="sample ss" style="font-size:16px;line-height:1.35;color:var(--muted)">Bloomberg · 14 minutes ago</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>eyebrow</b>Source Sans 3 Semibold<span class="m"> · 13 / 1.20 / 0.14 / caps</span><br>The overline above a card.</div>
+        <p class="sample ss" style="font-weight:600;font-size:13px;line-height:1.20;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)">House view</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>tabLabel</b>Source Sans 3<span class="m"> · 16 / 1.0</span><br>Tab bar only. Leading closed up so a two-line tab name does not read as a paragraph.</div>
+        <p class="sample ss" style="font-size:16px;line-height:1.0">Research<br>library</p>
+      </div>
+      <div class="specimen">
+        <div class="spec"><b>chartLabel</b>Source Sans 3<span class="m"> · 13 / 1.30</span><br>Inside a plot only. Never app copy.</div>
+        <p class="sample ss" style="font-size:13px;line-height:1.30;color:var(--muted)">Q1 · Q2 · Q3 · Q4</p>
+      </div>
+    </section>
+
+    <section id="space">
+      <p class="eyebrow">Foundations</p>
+      <h2>Spacing</h2>
+      <p class="sub">A seven-step scale.</p>
+
+      <div class="scale-row"><span class="k">xs</span><span class="v">4pt</span><div class="bar" style="width:4px"></div></div>
+      <div class="scale-row"><span class="k">s</span><span class="v">8pt</span><div class="bar" style="width:8px"></div></div>
+      <div class="scale-row"><span class="k">m</span><span class="v">16pt</span><div class="bar" style="width:16px"></div></div>
+      <div class="scale-row"><span class="k">l</span><span class="v">24pt</span><div class="bar" style="width:24px"></div></div>
+      <div class="scale-row"><span class="k">xl</span><span class="v">32pt</span><div class="bar" style="width:32px"></div></div>
+      <div class="scale-row"><span class="k">xxl</span><span class="v">48pt</span><div class="bar" style="width:48px"></div></div>
+
+      <div class="note">
+        <p><strong>screenMargin</strong> is a token of its own, currently pointing at <code>m</code> (16pt). It sets the left and right margin on every screen.</p>
+      </div>
+    </section>
+
+    <section id="radius">
+      <p class="eyebrow">Foundations</p>
+      <h2>Corners</h2>
+      <p class="sub">Four radii.</p>
+      <div class="radii">
+        <figure><div class="box" style="border-radius:6px"></div><figcaption><b>s · 6pt</b>Chips, tags, small tiles</figcaption></figure>
+        <figure><div class="box" style="border-radius:12px"></div><figcaption><b>m · 12pt</b>Buttons, inputs, panels</figcaption></figure>
+        <figure><div class="box" style="border-radius:20px"></div><figcaption><b>l · 20pt</b>Cards and sheets</figcaption></figure>
+        <figure><div class="box" style="border-radius:999px"></div><figcaption><b>pill</b>Fully rounded ends</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="elevation">
+      <p class="eyebrow">Foundations</p>
+      <h2>Elevation</h2>
+      <p class="sub">Two levels: flat, and the shadow carried by the toast, menu and modal. That shadow is two layers of brand navy at low opacity, offset downwards only.</p>
+      <div class="elevs">
+        <figure><div class="card"></div><figcaption><b>elev0</b>Flat. No shadow.</figcaption></figure>
+        <figure><div class="card e3"></div><figcaption><b>elev3</b>Modal, menu, toast. Navy at 10% twice.</figcaption></figure>
+      </div>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Level</th><th>Layer 1</th><th>Layer 2</th></tr></thead>
+          <tbody>
+            <tr><td class="n">elev3</td><td class="num">10% · blur 12 · y 8</td><td class="num">10% · blur 24 · y 18</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="motion">
+      <p class="eyebrow">Foundations</p>
+      <h2>Motion</h2>
+      <p class="sub">Four durations, two curves, one spring.</p>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Token</th><th>Value</th><th>Used for</th></tr></thead>
+          <tbody>
+            <tr><td class="n">duration.press</td><td class="num">90ms</td><td>Button and card press-down.</td></tr>
+            <tr><td class="n">duration.fast</td><td class="num">120ms</td><td>Taps and small state flips.</td></tr>
+            <tr><td class="n">duration.base</td><td class="num">220ms</td><td>Default transition.</td></tr>
+            <tr><td class="n">duration.slow</td><td class="num">360ms</td><td>Reveals and expansions.</td></tr>
+            <tr><td class="n">easing.ease</td><td class="num">cubic-bezier(.22,.61,.36,1)</td><td>Default curve, paired with base.</td></tr>
+            <tr><td class="n">easing.emphasis</td><td class="num">cubic-bezier(.16,1,.30,1)</td><td>Reveal curve, paired with slow.</td></tr>
+            <tr><td class="n">spring</td><td class="num">response .32 · damping .72</td><td>Selection indicators.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sub">Animations always play. The app does not reduce or disable them for the iOS Reduce Motion setting.</p>
+    </section>
+
+    <section id="inventory">
+      <p class="eyebrow">Components</p>
+      <h2>Inventory</h2>
+      <p class="sub">Grouped by what they do. All of them draw their colour, type and measurement from the tokens above.</p>
+
+      <div class="group">
+        <h3>Text and headings <span class="count">6</span></h3>
+        <div class="inv">
+          <figure><img src="images/EngageText.png" alt="EngageText" loading="lazy"><figcaption><b>EngageText</b>: renders copy in a named type role.</figcaption></figure>
+          <figure><img src="images/Eyebrow.png" alt="Eyebrow" loading="lazy"><figcaption><b>Eyebrow</b>: tracked, uppercase overline above a section or card.</figcaption></figure>
+          <figure><img src="images/CardHeader.png" alt="CardHeader" loading="lazy"><figcaption><b>CardHeader</b>: a card's title strip and the hairline that closes it.</figcaption></figure>
+          <figure><img src="images/SingleLineHeader.png" alt="SingleLineHeader" loading="lazy"><figcaption><b>SingleLineHeader</b>: a one-line header variant.</figcaption></figure>
+          <figure><img src="images/ExpandableProse.png" alt="ExpandableProse" loading="lazy"><figcaption><b>ExpandableProse</b>: long copy clamped to a few lines, with a control to read the rest.</figcaption></figure>
+          <figure><img src="images/CollapsedProse.png" alt="CollapsedProse" loading="lazy"><figcaption><b>CollapsedProse</b>: the measurement behind the clamp.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Containers and screen frames <span class="count">11</span></h3>
+        <div class="inv">
+          <figure><img src="images/EngageCard.png" alt="EngageCard" loading="lazy"><figcaption><b>EngageCard</b>: the default content container.</figcaption></figure>
+          <figure><img src="images/PlainCard.png" alt="PlainCard" loading="lazy"><figcaption><b>PlainCard</b>: no fill, border or padding, for a bespoke surface that still needs the container's behaviour.</figcaption></figure>
+          <figure><img src="images/Panel.png" alt="Panel" loading="lazy"><figcaption><b>Panel</b>: a titled detail container, with an optional footnote. Every detail chart and table sits in one.</figcaption></figure>
+          <figure><img src="images/MetricTableCard.png" alt="MetricTableCard" loading="lazy"><figcaption><b>MetricTableCard</b>: a metric table in the standard flush card.</figcaption></figure>
+          <figure><img src="images/WidgetTileCard.png" alt="WidgetTileCard" loading="lazy"><figcaption><b>WidgetTileCard</b>: a tappable launcher tile for a module.</figcaption></figure>
+          <figure><img src="images/AuthScaffold.png" alt="AuthScaffold" loading="lazy"><figcaption><b>AuthScaffold</b>: the pre-auth content column, centred and width-capped.</figcaption></figure>
+          <figure><img src="images/WordmarkHeader.png" alt="WordmarkHeader" loading="lazy"><figcaption><b>WordmarkHeader</b>: the wordmark over a hairline, at the root of a screen.</figcaption></figure>
+          <figure><img src="images/NavBar.png" alt="NavBar" loading="lazy"><figcaption><b>NavBar</b>: the compact top bar, with a centred title, a back button and optional trailing content.</figcaption></figure>
+          <figure><img src="images/TabBar.png" alt="TabBar" loading="lazy"><figcaption><b>TabBar</b>: the bottom tab bar.</figcaption></figure>
+          <figure><img src="images/Hairline.png" alt="Hairline" loading="lazy"><figcaption><b>Hairline</b>: the 1pt divider, horizontal or vertical.</figcaption></figure>
+          <figure><img src="images/WrapLayout.png" alt="WrapLayout" loading="lazy"><figcaption><b>WrapLayout</b>: flow layout that wraps items onto the next line.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Controls <span class="count">15</span></h3>
+        <div class="inv">
+          <figure><img src="images/EngageButton.png" alt="EngageButton" loading="lazy"><figcaption><b>EngageButton</b>: five variants. Primary navy, secondary outline, gold emphasis, ghost inline, on-dark.</figcaption></figure>
+          <figure><img src="images/IconButton.png" alt="IconButton" loading="lazy"><figcaption><b>IconButton</b>: a bare icon button for header accessories.</figcaption></figure>
+          <figure><img src="images/LinkButton.png" alt="LinkButton" loading="lazy"><figcaption><b>LinkButton</b>: an inline text link with no button chrome.</figcaption></figure>
+          <figure><img src="images/FavButton.png" alt="FavButton" loading="lazy"><figcaption><b>FavButton</b>: the star that adds a module to favourites.</figcaption></figure>
+          <figure><img src="images/BackButton.png" alt="BackButton" loading="lazy"><figcaption><b>BackButton</b>: gold chevron plus the back label.</figcaption></figure>
+          <figure><img src="images/DSToggle.png" alt="DSToggle" loading="lazy"><figcaption><b>DSToggle</b>: the on/off switch, tinted gold.</figcaption></figure>
+          <figure><img src="images/DSCheckbox.png" alt="DSCheckbox" loading="lazy"><figcaption><b>DSCheckbox</b>: a tick box with a label beside it.</figcaption></figure>
+          <figure><img src="images/Segmented.png" alt="Segmented" loading="lazy"><figcaption><b>Segmented</b>: a segmented picker; segments can carry a trailing gold count.</figcaption></figure>
+          <figure><img src="images/Chip.png" alt="Chip" loading="lazy"><figcaption><b>Chip</b>: a selectable token for peer names, saved prompts and focus topics.</figcaption></figure>
+          <figure><img src="images/ChipWrap.png" alt="ChipWrap" loading="lazy"><figcaption><b>ChipWrap</b>: chips that flow onto the next line.</figcaption></figure>
+          <figure><img src="images/Tag.png" alt="Tag" loading="lazy"><figcaption><b>Tag</b>: a short read-only status or category pill.</figcaption></figure>
+          <figure><img src="images/TagWrap.png" alt="TagWrap" loading="lazy"><figcaption><b>TagWrap</b>: a wrap of read-only tags.</figcaption></figure>
+          <figure><img src="images/EngageTextField.png" alt="EngageTextField" loading="lazy"><figcaption><b>EngageTextField</b>: labelled underline input; password variants get a reveal toggle.</figcaption></figure>
+          <figure><img src="images/EngageMenu.png" alt="EngageMenu" loading="lazy"><figcaption><b>EngageMenu</b>: a brand pop-up menu anchored to its label.</figcaption></figure>
+          <figure><img src="images/ExportShareButton.png" alt="ExportShareButton" loading="lazy"><figcaption><b>ExportShareButton</b>: the share affordance for a screen's downloads.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Lists <span class="count">2</span></h3>
+        <div class="inv">
+          <div><b>PagedList</b>: a list that arrives a page at a time.</div>
+          <figure><img src="images/PagingFooter.png" alt="PagingFooter" loading="lazy"><figcaption><b>PagingFooter</b>: the foot of a paged list while the next page is in flight.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Figures and data display <span class="count">7</span></h3>
+        <div class="inv">
+          <figure><img src="images/Stat.png" alt="Stat" loading="lazy"><figcaption><b>Stat</b>: a single figure with its label and optional delta.</figcaption></figure>
+          <figure><img src="images/StatTiles.png" alt="StatTiles" loading="lazy"><figcaption><b>StatTiles</b>: a compact grid of key/value tiles.</figcaption></figure>
+          <figure><img src="images/MetricTable.png" alt="MetricTable" loading="lazy"><figcaption><b>MetricTable</b>: a label column plus right-aligned figure columns.</figcaption></figure>
+          <figure><img src="images/CompTable.png" alt="CompTable" loading="lazy"><figcaption><b>CompTable</b>: you against your peer cohort, with a sticky leading column.</figcaption></figure>
+          <figure><img src="images/MeterBar.png" alt="MeterBar" loading="lazy"><figcaption><b>MeterBar</b>: a labelled progress meter with an optional note.</figcaption></figure>
+          <figure><img src="images/IconChip.png" alt="IconChip" loading="lazy"><figcaption><b>IconChip</b>: the navy rounded square with a gold glyph that fronts tiles and rows.</figcaption></figure>
+          <figure><img src="images/EngageIcon.png" alt="EngageIcon" loading="lazy"><figcaption><b>EngageIcon</b>: the named line-icon set.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Charts <span class="count">7</span></h3>
+        <p>All drawn from the chart palette above.</p>
+        <div class="inv">
+          <figure><img src="images/LineChart.png" alt="LineChart" loading="lazy"><figcaption><b>LineChart</b>: one or more lines, with a legend carrying each series' current level and change.</figcaption></figure>
+          <figure><img src="images/DualAxisLineChart.png" alt="DualAxisLineChart" loading="lazy"><figcaption><b>DualAxisLineChart</b>: two series on independent axes.</figcaption></figure>
+          <figure><img src="images/ColumnChart.png" alt="ColumnChart" loading="lazy"><figcaption><b>ColumnChart</b>: bar series; several series draw grouped, not stacked.</figcaption></figure>
+          <figure><img src="images/ChartLegend.png" alt="ChartLegend" loading="lazy"><figcaption><b>ChartLegend</b>: a wrapping legend of colour swatches.</figcaption></figure>
+          <figure><img src="images/ChartAxis.png" alt="ChartAxis" loading="lazy"><figcaption><b>ChartAxis</b>: how axis labels are placed.</figcaption></figure>
+          <figure><img src="images/SpreadXAxis.png" alt="SpreadXAxis" loading="lazy"><figcaption><b>SpreadXAxis</b>: how axis labels are spread across the plot.</figcaption></figure>
+          <figure><img src="images/ChartValueFormat.png" alt="ChartValueFormat" loading="lazy"><figcaption><b>ChartValueFormat</b>: how axis values are written.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>States and feedback <span class="count">15</span></h3>
+        <div class="inv">
+          <figure><img src="images/ComingSoon.png" alt="ComingSoon" loading="lazy"><figcaption><b>ComingSoon</b>: no source exists yet for anyone. A dashed marker.</figcaption></figure>
+          <figure><img src="images/MissingData.png" alt="MissingData" loading="lazy"><figcaption><b>MissingData</b>: a source exists, but not for this company.</figcaption></figure>
+          <figure><img src="images/NoData.png" alt="NoData" loading="lazy"><figcaption><b>NoData</b>: the source answered with no rows.</figcaption></figure>
+          <figure><img src="images/AwaitingData.png" alt="AwaitingData" loading="lazy"><figcaption><b>AwaitingData</b>: today's value is not published yet.</figcaption></figure>
+          <figure><img src="images/FailedMarker.png" alt="FailedMarker" loading="lazy"><figcaption><b>FailedMarker</b>: the fetch failed. Red dashed, tappable to retry.</figcaption></figure>
+          <figure><img src="images/NotInRelease.png" alt="NotInRelease" loading="lazy"><figcaption><b>NotInRelease</b>: a grey wash and a caption, untappable.</figcaption></figure>
+          <figure><img src="images/ErrorStateCard.png" alt="ErrorStateCard" loading="lazy"><figcaption><b>ErrorStateCard</b>: inline failure, with a tone chip, title, message and optional retry.</figcaption></figure>
+          <figure><img src="images/EmptyState.png" alt="EmptyState" loading="lazy"><figcaption><b>EmptyState</b>: a one-line "nothing yet".</figcaption></figure>
+          <figure><img src="images/Toast.png" alt="Toast" loading="lazy"><figcaption><b>Toast</b>: transient confirmation, above sheets and dialogs.</figcaption></figure>
+          <figure><img src="images/EngageAlert.png" alt="EngageAlert" loading="lazy"><figcaption><b>EngageAlert</b>: the brand modal decision card.</figcaption></figure>
+          <figure><img src="images/NoticeBanner.png" alt="NoticeBanner" loading="lazy"><figcaption><b>NoticeBanner</b>: an inline notice that holds a place in the layout.</figcaption></figure>
+          <figure><img src="images/Skeleton.png" alt="Skeleton" loading="lazy"><figcaption><b>Skeleton</b>: what a component draws instead of its own colours while loading.</figcaption></figure>
+          <figure><img src="images/Shimmer.png" alt="Shimmer" loading="lazy"><figcaption><b>Shimmer</b>: the diagonal sweep across a placeholder.</figcaption></figure>
+          <figure><img src="images/LoadableSection.png" alt="LoadableSection" loading="lazy"><figcaption><b>LoadableSection</b>: drives the four load states uniformly.</figcaption></figure>
+          <div><b>PagingFooter</b>: see lists above.</div>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Brand <span class="count">4</span></h3>
+        <div class="inv">
+          <figure><img src="images/EngageWordmark.png" alt="EngageWordmark" loading="lazy"><figcaption><b>EngageWordmark</b>: the lockup, a gold "R" chip beside the serif name.</figcaption></figure>
+          <figure><img src="images/BrandedCover.png" alt="BrandedCover" loading="lazy"><figcaption><b>BrandedCover</b>: the wordmark centred over the gold gradient, edge to edge.</figcaption></figure>
+          <figure><img src="images/AuthBackground.png" alt="AuthBackground" loading="lazy"><figcaption><b>AuthBackground</b>: the pre-auth gold gradient ground.</figcaption></figure>
+          <figure><img src="images/AuthFooter.png" alt="AuthFooter" loading="lazy"><figcaption><b>AuthFooter</b>: a muted prompt with an inline link, over fine print.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="fixed">
+      <p class="eyebrow">Components</p>
+      <h2>Not for restyling</h2>
+      <p class="sub">These have no visual design of their own.</p>
+      <div class="inv">
+        <div><b>CaptureProtected</b>: hides live content from screenshots and recordings.</div>
+        <div><b>FavouritesStore</b>: remembers which modules are starred.</div>
+        <div><b>ReleaseVisibility</b> / <b>ReleaseGate</b>: decides whether a surface renders, greys out, or is dropped.</div>
+        <div><b>TapReporting</b> / <b>AnalyticsSlug</b>: names controls so taps can be counted.</div>
+        <div><b>EngageTapStyle</b> / <b>EngageCardTapStyle</b>: the press feel and haptic on taps.</div>
+        <div><b>Loadable</b>: the four load states as a type.</div>
+        <div><b>PushLink</b>: a row that pushes a destination onto the stack.</div>
+        <div><b>WidgetDescriptor</b>: the service-free description of a module tile.</div>
+        <div><b>TypedLayout</b> / <b>MeasuringCell</b> / <b>ScaledChartHeight</b>: measurement helpers.</div>
+        <div><b>ScrollsToTop</b> / <b>ScrollsToSection</b>: scroll behaviour.</div>
+        <div><b>PassthroughWindow</b> / <b>ToastWindowOverlay</b>: how toasts render above everything.</div>
+        <div><b>ScreenshotMode</b>: a mode for capturing marketing screens.</div>
+      </div>
+    </section>
+
+    <footer>
+      Rothschild &amp; Co Engage · iOS design system · generated from the source at <code>Frameworks/DesignSystem</code>.
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>

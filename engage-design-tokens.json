@@ -1,0 +1,153 @@
+{
+  "$description": "Rothschild & Co Engage (iOS) design tokens. W3C Design Tokens format, importable into Figma via the Tokens Studio plugin. Each key maps to a named token in the app's code.",
+  "$version": "1.0.0",
+  "color": {
+    "$type": "color",
+    "brand": {
+      "$description": "The Rothschild & Co brand set.",
+      "rothschildBlue": { "$value": "#1C355E", "$description": "Primary brand navy. Primary text, primary buttons, hero surfaces." },
+      "gold": { "$value": "#CC9F53", "$description": "Brand accent. Selection, emphasis, AI markers, active states." },
+      "red": { "$value": "#8A1E41", "$description": "Brand claret. Negative values, error tone." },
+      "rose": { "$value": "#E8C9BA", "$description": "Soft warm fill sitting under red ink." },
+      "graphite": { "$value": "#4C4A47", "$description": "Secondary text." },
+      "white": { "$value": "#FFFFFF" }
+    },
+    "semantic": {
+      "$description": "Aliases onto the brand set.",
+      "textPrimary": { "$value": "{color.brand.rothschildBlue}" },
+      "textSecondary": { "$value": "{color.brand.graphite}" },
+      "background": { "$value": "{color.brand.white}", "$description": "The app page background (a gold-tinted gradient is laid over this on tab screens)." },
+      "accent": { "$value": "{color.brand.gold}" }
+    },
+    "working": {
+      "$description": "Derived from the brand set.",
+      "surface1": { "$value": "#FFFFFF", "$description": "Card fill. Pure white for contrast against the ivory page." },
+      "surface2": { "$value": "#EFECEA", "$description": "Recessed fill: chart tracks, inset panels, skeletons." },
+      "hairline": { "$value": "#E5E2DC", "$description": "1pt divider between cards." },
+      "hairlineSoft": { "$value": "#EFEDE9", "$description": "1pt divider inside a card." },
+      "inkSoft": { "$value": "#3C4A66", "$description": "Body copy on light surfaces: navy softened for long reads." },
+      "muted": { "$value": "#8A8780", "$description": "Captions, timestamps, inactive tab labels." },
+      "positive": { "$value": "#3D664A", "$description": "Positive figures and up-moves." },
+      "positiveSoft": { "$value": "#D3E6D8", "$description": "Soft fill under positive ink." },
+      "negative": { "$value": "#8A1E41", "$description": "Negative figures and down-moves." },
+      "warning": { "$value": "#A07A2B" },
+      "goldSoft": { "$value": "#F5ECDD", "$description": "Cream fill for gold-toned panels and callouts." },
+      "goldInk": { "$value": "#7A5E1F", "$description": "Readable gold for text on cream." },
+      "onDark": { "$value": "#F6F4EF", "$description": "Primary text on navy hero surfaces." },
+      "onDarkMuted": { "$value": "#9AA6C0", "$description": "Secondary text on navy." },
+      "bluePress": { "$value": "#142A4A", "$description": "Pressed state of a primary navy button." },
+      "goldPress": { "$value": "#B98C3F", "$description": "Pressed state of a gold button." }
+    },
+    "tint": {
+      "$description": "A percentage tint of the primary blue.",
+      "blue": {
+        "40": { "$value": "#A4AEBF", "$description": "40% navy. The unfilled star, and the share glyph." }
+      }
+    },
+    "chart": {
+      "$description": "The default 12-step series order, used when a chart is handed several data series.",
+      "series": {
+        "$description": "Order matters: series 1 is the first line drawn, and so on.",
+        "1": { "$value": "#2E3E80" },
+        "2": { "$value": "#50A1A1" },
+        "3": { "$value": "#ACBFB7" },
+        "4": { "$value": "#3D664A" },
+        "5": { "$value": "#B0BA7D" },
+        "6": { "$value": "#992E63" },
+        "7": { "$value": "#CCA7A7" },
+        "8": { "$value": "#6E9966" },
+        "9": { "$value": "#752F5A" },
+        "10": { "$value": "#1F6699" },
+        "11": { "$value": "#C3C29D" },
+        "12": { "$value": "#B55B6A" }
+      }
+    }
+  },
+  "fontFamily": {
+    "$type": "fontFamily",
+    "serif": { "$value": "Calluna", "$description": "Commercial serif. Titles, ledes, stat values. Licensed: a substitute needs a licence check." },
+    "sans": { "$value": "Source Sans 3", "$description": "Open Font Licence sans. Body, figures, labels, all interface chrome." }
+  },
+  "fontWeight": {
+    "$type": "fontWeight",
+    "regular": { "$value": 400 },
+    "semibold": { "$value": 600 },
+    "bold": { "$value": 700 }
+  },
+  "typography": {
+    "$type": "typography",
+    "$description": "Sizes are in points at the default Dynamic Type setting and scale with the user's text-size setting. lineHeight is a multiple of the size; letterSpacing is in em.",
+    "largeTitle": { "$value": { "fontFamily": "{fontFamily.serif}", "fontWeight": "{fontWeight.bold}", "fontSize": "38", "lineHeight": "1.12", "letterSpacing": "-0.01" }, "$description": "The screen heading on every top-level and detail screen." },
+    "displayL": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "44", "lineHeight": "1.10" }, "$description": "Largest figure. Tabular digits." },
+    "title": { "$value": { "fontFamily": "{fontFamily.serif}", "fontWeight": "{fontWeight.semibold}", "fontSize": "32", "lineHeight": "1.15", "letterSpacing": "-0.005" } },
+    "displayM": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "32", "lineHeight": "1.15" }, "$description": "Hero figure. Tabular digits." },
+    "statValue": { "$value": { "fontFamily": "{fontFamily.serif}", "fontWeight": "{fontWeight.regular}", "fontSize": "28", "lineHeight": "1.20" }, "$description": "The figure in a stat tile. Tabular digits." },
+    "displayS": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "26", "lineHeight": "1.20" }, "$description": "Tabular digits." },
+    "lede": { "$value": { "fontFamily": "{fontFamily.serif}", "fontWeight": "{fontWeight.regular}", "fontSize": "22", "lineHeight": "1.32" }, "$description": "The opening serif paragraph of a long read." },
+    "figure": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "22", "lineHeight": "1.30" }, "$description": "Standard figure. Tabular digits." },
+    "headline": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.semibold}", "fontSize": "20", "lineHeight": "1.30" }, "$description": "Card titles and list row titles." },
+    "body": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "18", "lineHeight": "1.40" }, "$description": "Default reading copy." },
+    "note": { "$value": { "fontFamily": "{fontFamily.serif}", "fontWeight": "{fontWeight.regular}", "fontSize": "18", "lineHeight": "1.40" }, "$description": "Serif aside." },
+    "subhead": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "17", "lineHeight": "1.45" }, "$description": "The line under a screen title." },
+    "figureS": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "17", "lineHeight": "1.30" }, "$description": "Table cell figure. Tabular digits." },
+    "caption": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "16", "lineHeight": "1.35" }, "$description": "Timestamps, sources, secondary detail." },
+    "eyebrow": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.semibold}", "fontSize": "13", "lineHeight": "1.20", "letterSpacing": "0.14", "textCase": "uppercase" }, "$description": "The tracked overline above a card or section." },
+    "tabLabel": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "16", "lineHeight": "1.0" }, "$description": "Tab bar labels only. Leading is closed up so two stacked lines of one tab name do not read as a paragraph." },
+    "chartLabel": { "$value": { "fontFamily": "{fontFamily.sans}", "fontWeight": "{fontWeight.regular}", "fontSize": "13", "lineHeight": "1.30" }, "$description": "Text inside a plot only. Never used in app copy." }
+  },
+  "spacing": {
+    "$type": "dimension",
+    "$description": "The full spacing scale.",
+    "zero": { "$value": "0px" },
+    "xs": { "$value": "4px" },
+    "s": { "$value": "8px" },
+    "m": { "$value": "16px" },
+    "l": { "$value": "24px" },
+    "xl": { "$value": "32px" },
+    "xxl": { "$value": "48px" },
+    "screenMargin": { "$value": "{spacing.m}", "$description": "Every screen's left and right margin." }
+  },
+  "borderRadius": {
+    "$type": "dimension",
+    "s": { "$value": "6px", "$description": "Chips, tags, small tiles." },
+    "m": { "$value": "12px", "$description": "Buttons, inputs, inner panels." },
+    "l": { "$value": "20px", "$description": "Cards and sheets." },
+    "pill": { "$value": "999px", "$description": "Fully rounded ends." }
+  },
+  "borderWidth": {
+    "$type": "dimension",
+    "hairline": { "$value": "1px" }
+  },
+  "elevation": {
+    "$type": "shadow",
+    "$description": "Every layer is Rothschild Blue at low opacity, offset downwards only.",
+    "0": { "$value": [], "$description": "Flat. No shadow." },
+    "3": {
+      "$value": [
+        { "color": "rgba(28, 53, 94, 0.10)", "offsetX": "0px", "offsetY": "8px", "blur": "12px", "spread": "0px" },
+        { "color": "rgba(28, 53, 94, 0.10)", "offsetX": "0px", "offsetY": "18px", "blur": "24px", "spread": "0px" }
+      ],
+      "$description": "Modal, menu, toast."
+    }
+  },
+  "motion": {
+    "$description": "Quiet, functional motion. Animations always play; the app does not honour Reduce Motion.",
+    "duration": {
+      "$type": "duration",
+      "press": { "$value": "90ms", "$description": "Button and card press-down." },
+      "fast": { "$value": "120ms", "$description": "Taps and small state flips." },
+      "base": { "$value": "220ms", "$description": "Default transition." },
+      "slow": { "$value": "360ms", "$description": "Reveals and expansions." }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "ease": { "$value": [0.22, 0.61, 0.36, 1], "$description": "Default curve, paired with the base duration." },
+      "emphasis": { "$value": [0.16, 1, 0.30, 1], "$description": "Reveal curve, paired with the slow duration." }
+    },
+    "spring": {
+      "$description": "Selection indicators. Not a cubic bezier: a physical spring.",
+      "response": { "$value": 0.32 },
+      "dampingFraction": { "$value": 0.72 }
+    }
+  }
+}
